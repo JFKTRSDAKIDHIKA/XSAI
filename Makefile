@@ -200,6 +200,12 @@ endif
 override SIM_ARGS += --with-dramsim3
 endif
 
+# co-simulation with the coralBench Ramulator2 DDR4 contract (difftest
+# WITH_RAMULATOR2); the RTL side is the same dynamic-latency AXI4Memory
+ifeq ($(WITH_RAMULATOR2),1)
+override SIM_ARGS += --with-dramsim3
+endif
+
 # SimAXIMem size in GB (for sim-verilog only)
 ifneq ($(SIM_MEM_SIZE),)
 override SIM_ARGS += --sim-mem-size $(SIM_MEM_SIZE)

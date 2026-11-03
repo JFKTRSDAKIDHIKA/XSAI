@@ -576,6 +576,17 @@ class DefaultMatrixConfig(n: Int = 1) extends Config(
   })
 )
 
+// DefaultMatrixConfig plus FP32 x FP32 -> FP32 MMA (mcfg type fp32 for A, B
+// and C). CUTE runs it on the TF32 lanes at the TF32 rate, with full 24-bit
+// significand products.
+class DefaultMatrixFp32Config(n: Int = 1) extends Config(
+  new DefaultMatrixConfig(n).alter((site, here, up) => {
+    case XSTileKey => up(XSTileKey).map { core =>
+      core.copy(MatrixExtension = core.MatrixExtension.copy(enableFp32Fp32 = true))
+    }
+  })
+)
+
 // Keep the prefetch-enabled experiment as a separate static configuration so
 // DefaultMatrixConfig remains the reproducible prefetch-off baseline.
 class DefaultMatrixPrefetchConfig(n: Int = 1) extends Config(
