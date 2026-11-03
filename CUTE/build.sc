@@ -1,0 +1,183 @@
+import mill._
+import scalalib._
+import scalafmt._
+import publish._
+import $file.common
+import $file.`rocket-chip`.common
+import $file.`rocket-chip`.cde.common
+import $file.`rocket-chip`.hardfloat.common
+import $file.XSAICache.common
+
+val projectRoot = os.Path(sys.env("MILL_WORKSPACE_ROOT"))
+val localDifftestRoot = projectRoot / "difftest"
+val siblingDifftestRoot = projectRoot / os.up / "difftest"
+val difftestRoot = Seq(localDifftestRoot, siblingDifftestRoot)
+  .find(path => os.exists(path / "src" / "main" / "scala"))
+  .getOrElse(localDifftestRoot)
+val difftestSourceFiles =
+  if (os.exists(difftestRoot / "src" / "main" / "scala")) {
+    os.walk(difftestRoot / "src" / "main" / "scala")
+      .filter(os.isFile)
+      .filter(_.ext == "scala")
+  } else Seq.empty
+val defaultScalaVersion = "2.13.15"
+def defaultVersions = Map(
+  "chisel"        -> ivy"org.chipsalliance::chisel:6.7.0",
+  "chisel-plugin" -> ivy"org.chipsalliance:::chisel-plugin:6.7.0",
+  "chiseltest"    -> ivy"edu.berkeley.cs::chiseltest:6.0.0"
+)
+
+trait HasChisel extends ScalaModule {
+  def chiselModule: Option[ScalaModule] = None
+
+  def chiselPluginJar: T[Option[PathRef]] = None
+
+  def chiselIvy: Option[Dep] = Some(defaultVersions("chisel"))
+
+  def chiselPluginIvy: Option[Dep] = Some(defaultVersions("chisel-plugin"))
+
+  override def scalaVersion = defaultScalaVersion
+
+  override def scalacOptions = super.scalacOptions() ++
+    Agg("-language:reflectiveCalls", "-Ymacro-annotations", "-Ytasty-reader")
+
+  override def ivyDeps = super.ivyDeps() ++ Agg(chiselIvy.get)
+
+  override def scalacPluginIvyDeps = super.scalacPluginIvyDeps() ++ Agg(chiselPluginIvy.get)
+}
+
+object rocketchip extends `rocket-chip`.common.RocketChipModule with HasChisel {
+
+  val rcPath = millOuterCtx.millSourcePath / "rocket-chip"
+  override def millSourcePath = rcPath
+
+  def mainargsIvy = ivy"com.lihaoyi::mainargs:0.7.0"
+
+  def json4sJacksonIvy = ivy"org.json4s::json4s-jackson:4.0.7"
+
+  object macros extends `rocket-chip`.common.MacrosModule with HasChisel {
+    def scalaReflectIvy = ivy"org.scala-lang:scala-reflect:${scalaVersion}"
+  }
+
+  object cde extends `rocket-chip`.cde.common.CDEModule with HasChisel {
+    override def millSourcePath = rcPath / "cde" / "cde"
+  }
+
+  object hardfloat extends `rocket-chip`.hardfloat.common.HardfloatModule with HasChisel {
+    override def millSourcePath = rcPath / "hardfloat" / "hardfloat"
+  }
+
+  def macrosModule = macros
+
+  def hardfloatModule = hardfloat
+
+  def cdeModule = cde
+
+}
+
+object utility extends SbtModule with HasChisel {
+  override def millSourcePath = millOuterCtx.millSourcePath / "utility"
+
+  override def moduleDeps = super.moduleDeps ++ Seq(rocketchip)
+}
+
+object openNCB extends SbtModule with HasChisel {
+  override def millSourcePath = millOuterCtx.millSourcePath / "XSAICache" / "OpenNCB"
+
+  override def moduleDeps = super.moduleDeps ++ Seq(rocketchip)
+}
+
+object XSAICache extends SbtModule with HasChisel with $file.XSAICache.common.XSCacheModule {
+  override def millSourcePath = millOuterCtx.millSourcePath / "XSAICache"
+
+  def openNCBModule: ScalaModule = openNCB
+
+  def rocketModule = rocketchip
+
+  def utilityModule = utility
+
+  object test extends SbtTests with TestModule.ScalaTest {
+    override def ivyDeps = super.ivyDeps() ++ Agg(
+      defaultVersions("chiseltest"),
+    )
+  }
+}
+
+object difftest extends SbtModule with HasChisel {
+  override def millSourcePath = difftestRoot
+
+  override def sources = T.sources {
+    difftestSourceFiles.map(PathRef(_))
+  }
+}
+
+object cuteFpe extends SbtModule with HasChisel {
+
+  override def millSourcePath = millOuterCtx.millSourcePath / "cute-fpe" / "fpe"
+
+  override def sources = T.sources {
+    val sourceRoot = millSourcePath / "src" / "main" / "scala" / "top"
+    Seq(
+      "CuteFpeConfig.scala",
+      "CuteFpeParameters.scala",
+      "CmpTree.scala",
+      "FReducePE.scala",
+      "FReduceTypes.scala",
+      "FVecDecoder.scala",
+      "MACPipes.scala",
+      "PipeBundles.scala"
+    ).map(name => PathRef(sourceRoot / name))
+  }
+
+  override def moduleDeps = super.moduleDeps ++ Seq(
+    rocketchip.cde
+  )
+}
+
+object CUTEBase extends SbtModule with HasChisel {
+
+  override def millSourcePath = millOuterCtx.millSourcePath
+
+  override def sources = T.sources {
+    Seq(PathRef(millSourcePath / "src" / "main" / "scala" / "CUTEParameters.scala"))
+  }
+
+  override def moduleDeps = super.moduleDeps ++ Seq(
+    rocketchip,
+    cuteFpe
+  )
+}
+
+object CUTE extends SbtModule with HasChisel with $file.common.CUTEModule {
+
+  override def millSourcePath = millOuterCtx.millSourcePath
+
+  override def sources = T.sources {
+    val sourceRoot = millSourcePath / "src" / "main" / "scala"
+    os.walk(sourceRoot)
+      .filter(p => os.isFile(p) && p.ext == "scala")
+      .filter(p => p.last != "CUTEParameters.scala")
+      .map(PathRef(_))
+  }
+
+  override def moduleDeps = super.moduleDeps ++ Seq(
+    CUTEBase,
+    cuteFpe
+  )
+
+  def rocketModule: ScalaModule = rocketchip
+
+  def utilityModule: ScalaModule = utility
+
+  def coupledL2Module: ScalaModule = XSAICache
+
+  def difftestModule: ScalaModule = difftest
+
+  object test extends SbtTests with TestModule.ScalaTest {
+    override def ivyDeps = super.ivyDeps() ++ Agg(
+      defaultVersions("chiseltest"),
+    )
+  }
+
+  override def scalacOptions = super.scalacOptions() ++ Agg("-deprecation", "-feature")
+}

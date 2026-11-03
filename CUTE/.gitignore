@@ -1,0 +1,14 @@
+*~
+.bloop/
+.bsp/
+.idea/
+build/
+out/
+target/
+test_run_dir/
+*.cmd
+*.in
+*.out
+*#
+*.o
+*.#*

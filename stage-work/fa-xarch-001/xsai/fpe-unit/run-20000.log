@@ -1,0 +1,6 @@
+FP32 checked=20000 mismatches=0
+TF32 checked=20000 mismatches=0
+BF16 checked=20000 mismatches=0
+INT8 checked=20000 mismatches=0
+FP32 vs exact: finite=17142 worst_error_in_units_of_2^(maxexp-23)=6.443 worst_relative=3.084e-05
+cycles=94383 PASS

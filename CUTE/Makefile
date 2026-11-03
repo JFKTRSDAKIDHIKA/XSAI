@@ -1,0 +1,38 @@
+THREADS_BUILD 	?= 1
+
+CMAKE_CXX_COMPILER :=
+ifneq ($(origin CXX_COMPILER), undefined)
+	CMAKE_CXX_COMPILER := -DCMAKE_CXX_COMPILER=$(CXX_COMPILER)
+endif
+
+
+init:
+	git submodule update --init
+	cd XSAICache && git submodule update --init OpenNCB
+	cd rocket-chip && git submodule update --init hardfloat cde
+
+compile:
+	mill -i CUTE.compile
+
+TOP = TestTop
+TOP_L2 = TestTopWithL2
+BUILD_DIR = ./build
+TOP_V = $(BUILD_DIR)/$(TOP).sv
+TOP_L2_V = $(BUILD_DIR)/$(TOP_L2).sv
+MEM_GEN = ./scripts/vlsi_mem_gen
+MEM_GEN_SEP = ./scripts/gen_sep_mem.sh
+
+gen-test-top:
+	mill -i CUTE.test.runMain cute.$(TOP) -td $(BUILD_DIR) --target systemverilog --split-verilog
+	$(MEM_GEN_SEP) "$(MEM_GEN)" "$(TOP_V).conf" "$(BUILD_DIR)"
+
+gen-test-top-l2:
+	mill -i CUTE.test.runMain cute.$(TOP_L2) -td $(BUILD_DIR) --target systemverilog --split-verilog
+	$(MEM_GEN_SEP) "$(MEM_GEN)" "$(TOP_L2_V).conf" "$(BUILD_DIR)"
+
+test-top:	
+	$(MAKE) gen-test-top
+
+clean:
+	rm -rf ./build
+	rm -rf ./out

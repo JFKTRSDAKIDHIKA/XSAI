@@ -1,0 +1,2065 @@
+START 2026-10-20T14:11:38+08:00
+c1c8c65101903d931604be937e98f5ba55cc2ef3
+ 359a009486819808add47a3f3c48e07c6a48a831 CUTE (heads/fa-fp32)
+ 06533e05989d2bac23d97ee724d1f31b683f385c ChiselAIA (native_axi-51-g06533e0)
+ 09def1a7efa4707a74b7f31fe0a1c254b0940b78 ChiselIOPMP (09def1a)
+ 1186ab336ad130767f6e86fd6afc7cd1d24d1098 XSAICache (heads/master-2-g1186ab3)
+ 3c7a6971a84937922cc01c2e923656a0c8327713 difftest (heads/coralbench-ramulator2)
+ e1bd4695ca7beb36a5ce7357e9527ad9e95b9ec1 fudian (heads/pipeline)
+ d143eddedbecb90f1dd03c138125acafe3b606c3 ready-to-run (nemu-ci-workloads-20250913-17-gd143edd)
+ bb5d63cbddcc40262b2fd2fe6cf5ecd287094488 rocket-chip (remotes/origin/chisel-7-0-0-RC-3-5-gbb5d63cbd)
+ b3afd2908ec06ca58cc5f4ea1d3989ad3a4a5b03 utility (heads/master)
+ 64e5cf98bc12d7a393aeb8102978ddcda72b7206 yunsuan (remotes/origin/tmp-xfb-20250724-5-g64e5cf9)
+make -C ./difftest emu-mk NUM_CORES=1 RTL_SUFFIX=sv
+make[1]: Entering directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+readlink: missing operand
+Try 'readlink --help' for more information.
+make[1]: Nothing to be done for 'emu-mk'.
+make[1]: Leaving directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+make -C ./difftest emu NUM_CORES=1 RTL_SUFFIX=sv
+make[1]: Entering directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+readlink: missing operand
+Try 'readlink --help' for more information.
+make[2]: Entering directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+readlink: missing operand
+Try 'readlink --help' for more information.
+Tue, 20 Oct 2026 14:11:41 +0800
+make[3]: Entering directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+readlink: missing operand
+Try 'readlink --help' for more information.
+/usr/bin/time -av -o /das/ts01/home/jiashuao/AMENPU/XSAI/build/time.log make -s VM_PARALLEL_BUILDS=1 OPT_SLOW="-O0" \
+					OPT_FAST="-O3 -fno-slp-vectorize" \
+					PGO_CFLAGS="" \
+					PGO_LDFLAGS="" \
+					OBJCACHE="" \
+					-C /das/ts01/home/jiashuao/AMENPU/XSAI/build/verilator-compile -f /das/ts01/home/jiashuao/AMENPU/XSAI/build/verilator-compile/VSimTop.mk 
+make[4]: Entering directory '/das/ts01/home/jiashuao/AMENPU/XSAI/build/verilator-compile'
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]warning: 
+unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]warning: 
+unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+warning: unknown warning option '-Wno-subobject-linkage' [-Wunknown-warning-option]
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+1 warning generated.
+make[4]: Leaving directory '/das/ts01/home/jiashuao/AMENPU/XSAI/build/verilator-compile'
+make[3]: Leaving directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+make[2]: Leaving directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+make[1]: Leaving directory '/das/ts01/home/jiashuao/AMENPU/XSAI/difftest'
+DONE 2026-10-20T14:18:51+08:00
+lrwxrwxrwx 1 jiashuao jiashuao 63 Oct 20 14:18 build/emu -> /das/ts01/home/jiashuao/AMENPU/XSAI/build/verilator-compile/emu
+EXIT 0

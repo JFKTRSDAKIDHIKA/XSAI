@@ -1,0 +1,165 @@
+FA cross-arch benchmark (AMEOOO / XSAI / Gemmini) — progress log
+User decisions 10-20: XSAI gets a real FP32 matrix path (implement it); Gemmini FP32 8x8; one clock
+(5 ns core cycle, 8 DRAM ticks); new branches OK; deletions only with approval (done: 185G freed).
+
+Branches (all uncommitted work-in-progress unless noted):
+- coralBench worktree /das/ts01/home/jiashuao/AMENPU/wt-xarch-bench, branch xarch-fa (from 8ce9851)
+    platform/dram/burst_dram.h  shared Ramulator2 burst service (pinned libameramulator.so ABI)
+- XSAI branch fa-xarch (Makefile WITH_RAMULATOR2, Configs DefaultMatrixFp32Config)
+    submodules synced to recorded commits via make init (difftest 09-30 edits stashed + saved as
+    difftest-local-0930.patch)
+    CUTE branch fa-fp32 (type tables, TaskController FP32 mapping, FReducePEFp32Emit test emitter)
+    CUTE/cute-fpe branch fa-fp32 (FP32 decode, 4 partial products, combine in pipe1, align in pipe2)
+    difftest branch coralbench-ramulator2 (WITH_RAMULATOR2 backend + FP32 in bit-exact CUTE model)
+- Chipyard ~/e2e/chipyard: testchipip branch coralbench-ramulator2 (mm_ramulator2, +ramulator2)
+
+Done:
+- Verilator 5.036 at ~/e2e/tools/verilator536
+- FPE unit test xsai/fpe-unit: 20000 vectors x {FP32,TF32,BF16,INT8} bit-exact vs model, PASS;
+  FP32 worst error 6.44 units of 2^(maxexp-23) vs exact.
+Running:
+- XSAI emu build: xsai/build_emu.sh -> xsai/logs-build_emu.log
+Next:
+- Chipyard config FP32 Gemmini 8x8 + Saturn + Rocket, uniform 500 MHz clocks, build sim w/ ramulator2
+- kernels, runners, AMEOOO 3x rerun, report
+
+10-20 13:10 update
+- Gemmini: Chipyard sim built (espresso needed; JAVA_HEAP 32G); gemmini-rocc-tests branch fa-xarch guards
+  the I-BERT integer softmax for float elem (compile fix only). Smoke decode/prefill PASS (7e-9/4e-8),
+  L2 Flush64 write-back verified by checksum; mcycle vs memory-port cycles: constant offset -> one clock.
+  Headline RVV block64 run: gemmini/run_headline.sh xarch-gemmini-rvv-b64-001 (logs-rvv-b64-001.log)
+- AMEOOO: main checkout has a peer session's WIP (inner-product dataflow) and its bazel-out model was rebuilt
+  12:46 from WIP (sha ecbdb577). DO NOT use it. Own model: worktree wt-xarch-ame @86131397 (detached),
+  ameooo/build_model.sh -> logs-build_model.log; snapshot ameooo/source-snapshot-86131397
+- coralBench run.py now accepts XSAI/Gemmini (--xsai-emu, --gemmini-simulator, --xarch-option P:k=v)
+
+10-20 13:55
+- Gemmini RVV b64 (run xarch-gemmini-rvv-b64-001, 1 repeat): 47,364 / 1,399,561 / 2,507,558 PASS
+- Gemmini scalar: libm (medlow) cannot link at 0x80000000 -> scalar_exp() same algorithm as RVV; run scalar-b64-003
+- AMEOOO clean model (wt-xarch-ame 86131397) sha 81f1fa8a (10-19 model was 0a37784d); 3x run xarch-ameooo-pipeline1-001
+- Artifact https://claude.ai/artifact/HAojfUrPDQivMfH3mSzzBB section 12 "跨架构比较（进行中）" (version 10);
+  working file scratchpad/ameooo-arch.html (session scratch; re-read artifact before next update in a new session)
+
+10-20 17:00
+- AMEOOO 3x (pipeline1): 24,406/208,065/373,309 zero spread; pipeline0 3x: 32,245/266,941/481,140
+- XSAI: CUTE C path needs mtilen=128 -> PV computed as O^T = V^T P^T (mlat + mlb). decode PASS 29,665.
+  BUG found: msync counter random at reset -> first macquire passed early -> row 127 of block 0 wrong in dense
+  (3.7e-4). Fix: MSYNCRESET(0) at kernel entry. Runs before fix (prefill-001 dense FAIL, causal PASS by luck,
+  vfexp2-001) are superseded. Formal: xsai/logs-poly-002.log (3 repeats), logs-vfexp2-002.log (screen).
+- Gemmini: layout cliff: scores at page offset 0x240 -> RVV softmax 4.8x slower; buffers now 4 KiB aligned.
+  aligned sweep b32/64/128: b64 best (47,271/1,397,652/2,502,414); phases dense: qk 337k softmax 1.83M pv 304k.
+  scalar (same exp algo): 89,036/12,333,422/23,829,672 (unaligned build). Formal 3x: logs-rvv-b64-formal-001,
+  logs-scalar-b64-formal-001.
+- Ablations: ameooo/ablation.sh <name> <field> <value>...; worktrees wt-abl-*; round 1: arrays1 chaining-off
+  rob32 outstanding8. Round 2 planned: earlystore-off contexts1 outputstationary accphys12.
+- aggregator: wt-xarch-bench framework/reports/xarch_report.py
+- 16:59 stopped gemmini scalar formal (host load 260/128 cores); rerun later with fewer workers; vfexp2-002 + scalar formal had not started at first launch (relaunched 16:33)
+
+10-20 23:20 artifact v23 published (merged onto another session's v22): section 12 final layout.
+ working file: scratchpad/ameooo-arch-merged.html (next update: publish this file path; re-read live first if another session touched it)
+ XSAI fixes: msyncreset + wait before reusing an accumulator (CUTE WAR with store in engine). poly-003 formal running:
+ decode 30,573 x3, causal 1,108,430; dense pending. phases-003 (causal/dense) running. Gemmini scalar formal-002 running.
+ Ablations done (arrays1 rob32 chaining-off outstanding8 earlystore-off outputstationary accphys12; contexts1 unsupported).
+ Pending placeholders on the page: XSAI dense cycles/ratio/traffic, XSAI prefill phases, Gemmini scalar formal prefill.
+ [23:25] Found GCC spills in the shared LMUL-8 RVV softmax loop (4 m8 groups: 2 vs8r/vl8re32 + scalar-acc vs1r/vl1re32 per
+ 32 elements, vfredusum/vfredmax on every iteration's critical path). Added xarch/xarch_softmax.h (LMUL 4, lane-wise
+ max/sum, one reduction per row) behind option softmax_lmul=4 (default 8; default build kernel.bin byte-identical).
+ Screens launched: output/xarch-xsai-m4-phases-001 (3 cases), xarch-xsai-m8-phases-decode-001, xarch-gemmini-m4-phases-001.
+ Logs: xsai/logs-m4-phases-001.log, xsai/logs-m8-phases-decode-001.log, gemmini/logs-rvv-b64-m4-phases-001.log
+ [23:26] killed m4 prefill screens (superseded by optimized kernels per user: 'XSAI和Gemmini这里在软件层面也需要很高的优化'); m4 decode screens kept
+ [00:05] User: "XSAI和Gemmini这里在软件层面也需要很高的优化". New XSAI kernel (default schedule=1, softmax_tuned=1):
+   xarch_softmax.h v3 = LMUL2, constants hoisted, base-2 exp (Cephes exp2f deg 6), lane-wise max/sum, 15 vec ops/group;
+   CUTE/RVV software pipeline (CUTE order QK0 QK1 PV0 QK2 PV1.., one step fed per softmax row, 3 score buffers,
+   counted releases on msync 1); blocks <= 64 rows compute O = P V with mlbt (decode 8x fewer PV MACs).
+   Killed baseline poly-003 duplicates (causal r0/r1, dense r1/r2); kept dense one run.
+   Runs: output/xarch-xsai-opt-001 (pipelined, phases), xarch-xsai-serial-tuned-001 (schedule=0, phases).
+ [00:20] New Gemmini kernel (default schedule=1, softmax_tuned=1): fence at each block start, PV(b-1) issued
+   after it, QK(b+1) issued halfway through softmax(b); 3 score buffers, 2 O buffers. Runs:
+   output/xarch-gemmini-opt-001, xarch-gemmini-serial-tuned-001 (both phase_timing). Scalar formal-002 = old serial kernel.
+ [00:40] decode screens: XSAI m8 phases 30,349 (qk 10,768 sm 3,640 pv 15,403 norm 132); XSAI m4 30,823 (sm 4,030: m4
+   SLOWER for one 512-key row; 4,030/32 iterations = 126 cycles per 16 elements for ~104 vector uops -> about one vector
+   uop per cycle, so op count, not spills/reduction chain, sets the rate); Gemmini m4 decode 46,610 (vs 47,271).
+   XSAI m4 decode counters: ~3,600 vector uops issued on the two VF issue queues during a 4,030-cycle softmax ->
+   0.9 uop/cycle of 2 possible: latency-bound (one iteration = ~20-deep chain + L2 load; each uop is a ROB entry, so
+   ROB 160 holds ~1.5 iterations). Bigger LMUL = fewer iterations in flight. Next lever if needed: LMUL 1 / 2-row interleave.
+ [00:10] host load 257/128: killed Gemmini scalar formal-002 leftovers (causal r0/r2, dense x3; old serial kernel), serial-tuned prefill ablations (XSAI+Gemmini; rerun later if CPU frees), m4 Gemmini decode (result 46,610 already logged).
+ [00:30] K/V prefetch during QK(0): XSAI prefetch.r per line (+zicbop), Gemmini Saturn vle32 m8; decode screens xarch-xsai-opt-pf-001, xarch-gemmini-opt-pf-001
+ [01:00] !! XSAI baseline poly-003 prefill-dense r2 FAILED validation: max_abs_error 4.33e-4, only O row 127 (block 0
+   last row); fit says the error comes entirely from keys 496..511 (the last 64 B line of block 0's P, last line RVV
+   writes before PV(0)); CUTE effectively used ~0.815 for all 16 values. The 'wait before accumulator reuse' fix did
+   NOT fix it. mfence == fence path in Fence.scala (both wait sbEmpty). Root cause open; waiting for phases-003 dense
+   (old kernel, different timing) and opt-001 dense (new kernel). Old XSAI dense formal number is INVALID.
+ XSAI opt decode 44,633 (sm 6,644, pv 26,434) / serial-tuned 42,994: worse. mlbt O=PV path slower (pv 26k vs 15k);
+   one-row LMUL2 softmax 6.6k (vs m8 3.6k, m4 4.0k) -> per-iteration cost ~100-230 cycles nearly fixed, iterations
+   barely overlap. Gemmini opt decode 46,678 / serial-tuned 46,213 (sm 2,741 vs 3,823 old).
+ Gemmini prefetch decode 73,807 (qk 59k incl. Saturn loads, pv 11.4k): Gemmini SoC memory port is AXI 64 bit = 8 B/cycle
+   (AME 64 B/beat, XSAI 32 B) and its L2 is the AbstractConfig default 512 KiB (not 2 MiB as written earlier).
+ [01:15] Gemmini FP32Gemmini8x8SaturnRocketMem512Config (WithNBitMemoryBus(512)) added on chipyard fa-xarch; build started: gemmini/logs-build_sim_mem512.log. XSAI direct-O (mlbt) path now off by default (XSAI_DIRECT_O=0). Softmax microbench: xsai/microbench (mb-001.log).
+ [01:25] User: do NOT change the Gemmini SoC memory port; XSAI optimize on current HW; report final numbers. Mem512 build killed, config class removed (partial generated-src/...Mem512Config dir left, ~small; delete only with approval).
+ [02:00] Gemmini opt-001 dense PASS 1,958,044 (sm 1,837,660 = 7.0 c/e unchanged vs old: Saturn vlrobEntries=4 -> ~1.7 B/cycle load bound). XSAI microbench m8_old: L1 3,562 / L2 3,536 cycles per row (not memory-bound). Added bounded single-read softmax (bound = sum|q_d| max|K_d|, fixture gap <= 1 nat, recompute fallback < 2^-100); launched gemmini opt-002 (causal, dense).
+ [02:40] microbench XSAI (mb-001): per row m8_old 3,562 / m2 6,131 / m1 11,752 (L1 == L2): per-iteration ~90 cycles fixed for m1/m2 -> iterations do not overlap (suspect per-iteration vsetvli). microbench2 (const-vl main loops, unroll, pinned vs scalar-operand Horner) running on XSAI + Gemmini: stage-work/fa-xarch-001/microbench2. Gemmini opt-002 (bounded): causal 1,145,286, dense 1,943,763 (sm 1.80M, only -2%).
+ [03:00] Gemmini mb2: exp pass alone (L1) m2 2,041/row = 4.0 c/e vs 6.9 in prefill -> L2 512 KiB overflow (3x128 KiB scores + K/V/Q/O). Block-rows sweep launched: xarch-gemmini-opt-002-b32, -b16 (dense).
+ [03:30] XSAI baseline phases causal (phases-003, old kernel m8): total 1,110,896 = qk 49,895 + softmax 982,482 (88.4%) + pv 32,672 + norm 45,513. XSAI mb2: m2 const-vl pinned exp-only 5,060/row (vs 6,131 tuned incl max+per-iter vsetvl) -> vsetvli not the serializer; next suspect: vector loads wait for older vector stores.
+ [04:10] XSAI mb3 (exp pass, L1): loads-first m2u4 2,296 (6 spills), m1u8 2,457, m2u2 2,532, separate dst buffer 5,059, swp(1 ahead) 5,723 vs plain 5,060 -> XS vector loads wait for every older vector store (no address disambiguation). mb4 (lf m1u16/u12, block double-buffer m1u8/u12) running.
+ [04:55] mb4: lf m1u12 2,194 (best, no spill), lf m1u16 2,477, dbl m1u8 2,612, dbl m1u12 3,510 (spills).
+   xarch_softmax.h: XARCH_SOFTMAX_LOAD_BLOCK 0 (Saturn: m2 const-vl) / 12 (XSAI: m1, 12 loads before stores); row max m4 const-vl.
+   Gemmini block sweep (bounded, dense): b64 1,943,763 / b32 1,989,532 / b16 2,371,757 -> keep 64.
+   FINAL runs launched: output/xarch-xsai-final-001 (formal), xarch-xsai-final-phases-001, xarch-gemmini-final-001 (formal),
+   xarch-gemmini-final-phases-001. XSAI opt-001 prefill and Gemmini opt-001 causal killed (superseded).
+ [05:40] XSAI final decode 32,410/32,179 (phases qk 10,764 sm 3,393 pv 17,626) vs baseline 30,349: PV +2.2k from msettile x3 per step. Fix: N/K once per call, M only on change (set_tile_m). Decode test: xarch-xsai-final-tm-001 (+phases).
+ [06:30] GEMMINI FINAL (output/xarch-gemmini-final-001, formal, all pass): decode 46,548 / causal 1,136,545 / dense 1,925,843 (max err 7.8e-9 / 3.6e-8 / 1.6e-8). Phases causal: qk 33,245 sm 1,031,418 pv 42,447 norm 28,977.
+ [06:50] tile cache: XSAI decode 32,229 (pv 17,328) - no real gain. Testing decode schedule=0 with softmax_tuned 0/1: xarch-xsai-dec-s0t0-001, -s0t1-001.
+ [07:30] decode serial: tuned 33,152 (pv 18,187), old softmax 32,402 (pv 17,498, same checksum as old kernel) -> PV slowdown structural; hypothesis: 127 unwritten P rows (BSS 768 KiB scores) not cached. Test: P^T load stride 0 when rows==1: xarch-xsai-dec-stride0-001.
+ [08:00] stride-0 P^T decode 42,819 (pv 27,986): reverted. Diagnostic: schedule=0 with one score buffer (XSAI_SCORE_BUFFERS=1): xarch-xsai-dec-sb1-001.
+ [08:35] one score buffer (serial) decode 30,417 (pv 15,620) -> confirmed: 127 padding P rows' cache state (BSS clear artifact) costs ~2k. Test: rows==1 P^T stride 64 B (pipelined, 3 buffers): xarch-xsai-dec-stride64-001.
+ [09:00] stride-64 decode 32,497 (no gain) -> reverted together with tile-m cache (no gain). Cause of decode +2k = crt BSS clear of 800 KiB (dirty lines written back during the kernel); old-kernel dense phases-003 FAILS identically (max err 4.33131e-4, row 127) -> deterministic, not a race. Fix: scores/output_blocks in .noinit (link.ld NOLOAD section); code identical to final-001 except addresses. FINAL-002 launched (xarch-xsai-final-002 formal + final-phases-002).
+ [09:30] noinit made decode 46,886 (buffers never touched -> DRAM): reverted; final-002 killed. Source now rebuilds final-001 kernel.bin byte-identically for all 3 cases -> XSAI FINAL = output/xarch-xsai-final-001. final-001: decode 32,179 (phases 32,410); causal phases 1,057,870 (sm 951,760 norm 68,875 qk 24,626 pv 12,047); mb gain (2.3x exp pass) not realized in-kernel (open).
+ [09:55] session restarted; XSAI final-001 formal: decode 32,179 / causal 1,087,691 / dense 1,750,570 (all pass). Skip-kernel traffic baselines for final binaries launched: xarch-xsai-skip-final-001, xarch-gemmini-skip-final-001. Next: update artifact §12 with final numbers, kernels, XSAI/Gemmini explanations.
+ [10:40] §12 final draft written: scratchpad/sec12-final.html (sources via fill_sec12.py). XSAI kernel-window DRAM (final): decode 4,164/4, causal 10,186/2,048, dense 10,899/2,048 (skip-final: 10,357 / 12,449 reads = BSS clear allocations). Gemmini final: 4,198/22, 21,507/11,293, 39,386/23,309.
+ [11:05] Artifact HAojfUrPDQivMfH3mSzzBB v27 published: §12 rewritten (final numbers, 3 kernels + sources, XSAI/Gemmini why-slow, optimization log, DRAM), §13 bullet updated; polished by haiku, numbers verified. User now asks: XSAI+Gemmini baseline material inside the coralnpu_ame submodule (coralBench) with one-click reproduction. Patches exported to stage-work/fa-xarch-001/repro-prep/patches (xsai-top, cute, cute-fpe, difftest, chipyard, testchipip, gemmini-rocc-tests); pins in xsai-submodules.txt.
+ [11:40] one-click package written (framework/xarch.sh, platform/{xarch,xsai,gemmini}/hw, README section + results, output/xarch-fa-1021/summary.json). Self-test launched from scratch: XARCH_ROOT=stage-work/fa-xarch-001/repro-test (references to local XSAI/chipyard for git objects, tarballs pre-seeded), log repro-test.log, run output output/xarch-repro-001.
+ [11:50] coralBench xarch-fa commit 6243b05 (package + results); unit tests 58/19/33 OK; docs_check OK; self-test running (tools step).
+ [12:05] User: no self-test. Killed repro-test (dir stage-work/fa-xarch-001/repro-test kept, ~1.3 GB tarballs+verilator src). Pushed xarch-fa -> coralBench origin/main = 6243b05 (fast-forward); local coralnpu_ame/coralBench main fast-forwarded; coralnpu_ame parent pointer NOT bumped (asked user).
+ [12:30] User: merge litho's work/rvv-vme-sim400mhz into coralBench main too; parent pointer always follows main. coralBench main = f02d614 (merge, no conflicts, docs_check PASS 57 docs, tests OK) pushed; coralnpu_ame main = 61b100bd (pointer bump via temp index, pushed, local main ff'd). Policy: after every coralBench main push, bump the parent pointer.
+ [12:40] User: finish the self-test. Relaunched framework/xarch.sh all (same env, resumes repro-test).
+ [11:20] USAGE LIMIT. Published RVV page draft (scratchpad/rvv-rethink.html) UNPOLISHED; haiku polish agent was running -> its output rvv-rethink.polished.html (if present) must be verified with check_polish.py and republished to the same artifact. Self-test (framework/xarch.sh all) still running detached: repro-test.log; last step reached: xsai (setup+build). bootstrap.sh espresso fix (-DBUILD_DOC=OFF) is UNCOMMITTED in wt-xarch-bench (detached at f02d614) -> commit to coralBench main + bump coralnpu_ame pointer. repro-test dir deletion pending user approval.
+ [14:55] self-test: xsai step passed from scratch (emu sha 9db2f175); gemmini build failed on sbt download (no Maven access). Added XARCH_MAVEN_MIRROR (sbt repositories + COURSIER_REPOSITORIES) and .done step stamps; relaunched with aliyun mirror.
+ [15:25] self-test: Gemmini decode reproduced 46,548 from scratch; fixes committed coralBench main df0bf53 + parent pointer bumped; XSAI runs in progress (output/xarch-repro-002)
+ [15:45] RVV page: haiku polish verified (numbers intact, svg/pre/style identical) + 4 corrections (scalar 66->91 c/e, bound gain 1.9% phase / 0.7% total, 64,664,636 is the diagnostic build, 'section 7' = AMEOoO page); published to T8cCGZjr5QcyesvtZfXMgq; same 0.7% correction applied to AMEOoO page §12. Self-test: Gemmini causal reproduced 1,136,545.
+ [15:50] self-test: XSAI decode reproduced 32,179 exactly; Gemmini decode 46,548 and causal 1,136,545 reproduced. Pending: XSAI causal/dense, Gemmini dense (output/xarch-repro-002).
+ [16:20] self-test: Gemmini dense reproduced 1,925,843 -> all 3 Gemmini cases + XSAI decode reproduced exactly from scratch. XSAI_PREFETCH_S option added (default 0; default binary unchanged).
+ [16:30] launched xarch-xsai-pfs-001 (prefetch_s=1, 3 cases) ahead of microbench5 result; kill if mb5 shows no gain
+ [16:40] self-test: XSAI causal reproduced 1,087,691 exactly; only XSAI dense left
+ [16:55] prefetch_s screen: decode 32,455 (no gain); causal ABORTED on RTL assertion CustomL1Hint.sv:228 at cycle 544,230 (software prefetch.r stream + CUTE traffic); dense killed.
+ [17:00] mb5: L1 3,044 / L2 no-prefetch 3,093 / L2 prefetch-next 3,087 per row -> S residency in L2 costs only 1.6%; the in-kernel 6.0 c/e vs ~4.5 c/e (bounded path) gap is NOT L2 latency. Diagnostic launched: xarch-xsai-serial-phases-002 (causal, schedule=0, phases) to separate feed/CUTE interference. Artifacts' L2-attribution text must be corrected.
+ [17:10] mb5 all: L1 3,044 / L2 3,093 / prefetch-next 3,087 / prefetch-all 3,120. RVV page §1(4), fig caption, §4.5, §6.1 corrected (L2 latency is not the cause); AMEOoO §12 bullet (3) being corrected too.
+ [17:35] SELF-TEST COMPLETE: all six runs identical to reference (cycles, errors, DRAM counts); reproduction.json committed; coralBench main 2243c2c.
+ [17:50] serial-phases-002 causal: softmax 941,749 (7.17 c/e) vs pipelined 951,760 -> feeding CUTE / CUTE interference ~1%: NOT the cause. Per-row fixed overhead ~500-800 cycles suspected (xarch_dot_bound reductions, zero fill, row bookkeeping). microbench6 launched (exp only / dot_bound only / kernel path).
+16:56 microbench9 launched: rot8i rot8b same_st same_nost (register-rotation exp pass; Kunminghu isDependOldVd on all vector FP ops)
+[17:35] mb8: loads-first tail 2,572 / fixed-vl tail 2,592 vs old 2,569 at 496 keys -> no gain, header edit reverted. ROOT CAUSE (RTL): DecodeUnit.scala:1140 isDependOldVd = isVppu||isVecOPF||isVStore||... -> every vector FP op waits for the old value of its destination register (ignoreOldVd only for other classes with vl=VLMAX); GCC reuses registers -> chains serialize (~70/group tail, ~19/group block).
+[17:40] mb9 (gen_rot.py, inline asm, 8 slots x 3 regs, role swap): rot8i (group-major, interleaved ld/chain/st) = 3,949/row at 512 (31/group) -> WORSE than GCC block code (2,875): vector IQs are 2 x 16 entries (numEnq 2 each), a group-major stream of 15 dependent instructions overlaps only ~2 groups. Bit-exact (p and sum) at 512/500/497. rot7b_b1 check FAILED: my loads-first half (8 loads) exceeds 7 slots -> invalid experiment, ignore.
+[17:45] launched step-major variants gen_rot2.py: rot8s (8 slots, .vf scalars) and rot7s_vv (7 slots, c/-125/k in vector regs, no f2v uops); expected ~5-6 cycles/group (VFEX0+2 bound: 7 vfma + 2 vialu + 1 vppu per group).
+[18:05] mb9 step-major: rot8s 2,466 (512) / 2,319 (480) / 2,463 (500); rot7s_vv (.vv constants, 7 slots) 2,364 (512). Compiled block code 2,875 / 2,304. rot8i (group-major) 3,949. Whole-run counters of rot8i: ctrlBlock.dispatch VecFlStall 567,811 of 905,216 cycles -> the vector physical register free list (vfPreg 128, minus 32+15 temp arch regs = ~81 in-flight writes) is the window limiter; each 4-element group writes 19 pregs (.vf: 3 f2v temps) or 16 (.vv). Perf runs mbperf-rot8s / mbperf-block12 launched (exp pass only, 384 rows) to read VecFlStall and busy counts. rot8b/same_st/rot7i_b1 emus silent for 20+ min (no first check line): probably stuck/slow, left running.
+17:49 killed rot8b/same_st/rot7i_b1 control emus (pathologically slow, >150 cycles/group; diagnostic value only); same_nost kept
+[18:50] DECODE BOUND (RTL + perf): UopInfoGen.scala:249 isComplex := isVecArith || isVecMem -> every vector instruction uses the single complex decoder -> <= 1 vector instruction decoded per cycle. mbperf-rot8s: decode in_fire 1,034,194 instrs in 995,864 cycles (1.04/cycle), ibuffer full 86% of cycles, VecFlStall 37%, decode backend_stall 10%. Exp pass = 17 vector instructions per 4 elements (LMUL 1) -> floor 2,176/row; rot8s 2,453 = 89% of it; compiled block12 2,802 (decode 0.89/cycle, rename stall_cycle_dispatch 180k). => on Kunminghu the vector INSTRUCTION count per element is the metric; only LMUL 2 (8 elements/instr) can go lower: 16 m2 groups = 3 slots x 3 + 7 constants (C5 dropped: vfmul.vf + vfadd.vf, two roundings in the leading step). Launched m2p3 (pipelined depth 3) and m2b3 (step-major) LMUL 2 variants (gen_rot4.py); expected ~1,100-1,400/row.
+18:16 launched xarch-xsai-rot-phases-001 (phase_timing=1, 3 cases)
+[19:05] mb9 final: full8v (vmacc, 16 instrs, bit-exact) 2,105; fast8v (no offset/clamp, 15 instrs) 2,021/1,915/2,034/1,998 (512/480/500/496); pipe8 2,267; same_nost 8,808 (69/group). Decode phases run: decode 32,991 (qk 11,016 / softmax 2,793 / pv 18,506 / norm 150) vs old phases 32,410 (10,764/3,393/17,626/153): softmax -600, matrix phases +1,130 (decode phase-sensitive).
+[19:40] FORMAL xarch-xsai-rot-001 (new pipelined asm exp pass, uncommitted in wt-xarch-bench): decode 32,845 (+2.1% vs 32,179; softmax -600 but QK/PV +1,100, decode is phase-sensitive), prefill-causal 827,666 (-23.9% vs 1,087,691; err 7.9e-8; instret 719,745; DRAM 20,917/2,048), prefill-dense 1,237,896 (-29.3% vs 1,750,570). All pass. Ratios vs AMEOOO: 1.35x / 3.98x / 3.32x. Phases run xarch-xsai-rot-phases-001: decode 32,991 (qk 11,016 / sm 2,793 / pv 18,506 / norm 150); causal/dense still running (logs-rot-phases-001.log).
+       USAGE LIMIT. Worktree state: docs-check PASS, unit tests OK (21/58/benchmark OK). TODO next session: (1) read phases causal/dense; (2) regenerate output/xarch-fa-1021/summary.json from xarch-xsai-rot-001 + gemmini-final-001 + ameooo-pipeline1-001 (scratch copy at scratchpad/summary-rot.json), note that reproduction.json covers the previous XSAI kernel; (3) README results section: new XSAI numbers, phase breakdown, kernel description, errors/DRAM/instret, decode note, 'loads wait for stores' sentence removal; (4) artifacts: rewrite per scratchpad/rvv-rewrite-draft.md (RVV page §01(2), §4.1-4.3, §06 bullet; AMEOoO §12 XSAI why-slow + tables), haiku polish + check_polish.py, publish; (5) commit (author user only) + push coralBench main, bump coralnpu_ame pointer; (6) optional: decode +2% investigation.
+[20:30] CORRECTION: the 19:40 dense number 1,237,896 was the PHASES build. FORMAL xarch-xsai-rot-001: decode 32,845 / causal 827,666 / dense 1,272,867 (-27.3%); ratios 1.35x / 3.98x / 3.41x. PHASES xarch-xsai-rot-phases-001: decode 32,991 (11,016/2,793/18,506/150), causal 797,929 (qk 38,066 / softmax 677,684 / pv 12,343 / norm 69,216), dense 1,237,896 (43,782 / 1,114,989 / 10,094 / 68,408); dense softmax 2,178/row = 4.25 c/e (was 3,080 = 6.0). summary.json regenerated from rot-001 + gemmini-final-001 + ameooo-pipeline1-001.
+[20:50] COMMITTED+PUSHED coralBench main ab8bd5f (xarch: software-pipelined exp pass; summary.json regenerated; README results/explanation rewritten); coralnpu_ame main 8ecaab1e (pointer bump, pushed); coralnpu_ame/coralBench checkout ff'd to ab8bd5f. Next: artifacts (RVV page T8cCGZjr5QcyesvtZfXMgq, AMEOoO page HAojfUrPDQivMfH3mSzzBB §12/§13) rewrite + haiku polish + publish.
+[21:35] ARTIFACTS PUBLISHED: AMEOoO page v38 (HAojfUrPDQivMfH3mSzzBB): §12 XSAI why-slow rewritten (decode 1 vector instr/cycle, old-vd dependency, preg/IQ window), tables (headline, ratios, phases, instret, opt log, microbench, DRAM, errors), §13 bullet; RVV page v4 (T8cCGZjr5QcyesvtZfXMgq): §01 (1)(2), §03 rows, §4.1-4.5, §05 row, §06 bullets. Both haiku-polished; numbers/code/svg/style/tags verified identical to the pre-polish versions; 3 glosses corrected by hand in each. Sources: scratchpad/ameooo-arch-final.html (= v38), scratchpad/rvv-rethink.polished.html (= v4); backups ameooo-arch-v37.backup.html, rvv-rethink.v3.backup.html; edit scripts edit_ameooo_v38.py, edit_rvv_v4.py. All emus finished. Open: decode +2% (code placement), repro-test dir deletion (user approval pending).
+[22:40] User asked: how XiangShan executes the softmax loop + respond to two Zhihu answers (乱序摸鱼) in the RVV rethink page. RTL facts: vsetvli vtype speculated at decode (VTypeGen, 64-entry vtype buffer), vl renamed (32 pregs), vsetvl flushes; v0 separate class (22 pregs, own RAT/freelist/ports); complex decoder splits ≤6 uops/cycle, ALL vector instrs complex (UopInfoGen comment says 1-uop could be simple); FMA destructive -> vmv1r copy; .vf -> extra f2v uop on FEX0; vfcvt only VFEX1; VFEX0/VFEX1 share vector WB port 0; matrix instrs decoded by core, base via DTLB, sent to CUTE after commit, no memory dep tracking (mfence / mrelease+macquire / WAR not covered).
+       microbench10: LMUL stream 1.04/1.04/3.00/5.27 cyc per instr (elems/cyc 3.84/7.68/5.31/6.06); mb11 int LMUL4/8 = 2.00/4.00 (port bound), fp 3.00/5.25 (IQ issues 1.25-1.5x per uop). vfexp2 pass 975 cyc/row (poly 2,021); vfexp2 vs poly: kernel-range max 1 ulp (7.6e-8), sweep [-125,0) 4,096 pts max 1 ulp (1.18e-7); one sample: vfexp2 -6.1e-8 vs poly +3.1e-8 (poly correctly rounded). mb12 (36,864 values, prints disagreements) running. Draft script scratchpad/rvv_v5_sections.py.
+[23:40] mb12: vfexp2 vs exact polynomial on 36,864 values (32,768 in [-125,0], 4,096 in [-0.5,0]): 5,948 differ, all by 1 ulp. First 600 disagreements vs correctly rounded 2^t (mpmath): see classify_mb12.py output. => vfexp2 FP32 is ~1 ulp on t<=0 (its unit test only promises 2^13 ulp). Using it in the XSAI kernel would cut the exp pass 2,021 -> 975 cyc/row; NOT done (user's precision rule; vendor bound weaker than measured) - offered to user.
+[00:05] RVV page v5 published (T8cCGZjr5QcyesvtZfXMgq): new §05 香山怎样执行这段循环, new §08 回应两篇知乎回答, renumbered 06/07/09/10, fig 1 XSAI bars fixed (3.9/4.3), RoCC wording fixed, vfexp2 bullet corrected, limits updated. haiku polish verified (numbers/code/svg/tags identical), 2 hand fixes. Sources: scratchpad/rvv-rethink.polished.html (= v5), build script rvv_v5_sections.py, backups rvv-rethink.v4.backup.html. Microbench sources: stage-work/fa-xarch-001/microbench10 (mb10, mb11, mb12, classify_mb12.py).
+[01:20 10-22] User "继续". Peer litho pushed coralBench main f3c1b4c incl. a03cbd1 which moves the xarch contract to 400 MHz (xarch.sh RAMULATOR_PROFILE=400mhz, burst_dram.h 4 ticks/cycle, chipyard 400 MHz) while README/summary.json are 500 MHz numbers -> FLAG to user, not reverted. coralnpu_ame pointer still ab8bd5f (bump pending with my next commit).
+       vfexp2 option: gen_exp_vfexp2.py -> xarch_exp_vfexp2.h (LMUL 2, 6 slots pipelined, 5 instrs/8 elems, no clamp). mb13: bit-identical to per-element reference (512/500/497/9/3 keys, offset 900 underflow case), <=1 ulp vs poly; 496 cyc/row (LMUL1 variant 893; poly 2,021). Kernel hooks: XSAI_EXP_VFEXP2 && tuned -> XARCH_SOFTMAX_EXP_VFEXP2; default build loaded image byte-identical to rot-001. Launched xarch-xsai-vfexp2rot-001 (+phases-001), uncommitted in wt-xarch-bench.
+[03:10 10-22] vfexp2 option RESULTS (xarch-xsai-vfexp2rot-001, formal): decode 30,750 / causal 407,117 / dense 519,988 (1.26/1.96/1.39 x AMEOOO); max abs err 3.7e-8/7.2e-8/7.4e-8 (LOWER than poly default 4.3e-8/7.9e-8/8.3e-8); DRAM 14,508/4, 20,603/2,048, 21,342/2,048; instret 3,234/259,195/356,175. Phases (vfexp2rot-phases-001): decode 30,493 (10,948/1,050/17,868/151), causal 378,685 (24,561/272,293/12,380/68,885), dense 485,974 (39,371/366,002/10,059/69,967) -> dense softmax 1.40 c/e; normalize now 14%.
+       COMMITTED coralBench main 5264b10 (rebased onto litho f3c1b4c; docs_check 92 PASS; tests platform 43 / framework 72 OK); coralnpu_ame main 6108f002 pointer bump pushed. Default unchanged (poly). Artifacts: AMEOoO v39 + RVV v6 being polished (listings refreshed from 5264b10: kernel.c, xarch_softmax.h, gen_exp_rot.py, rot excerpt, xarch_exp_vfexp2.h).
+       Next lever (not started): normalize phase ~69k (strided Oᵀ read).
+[03:40 10-22] Published AMEOoO v39 (§12 vfexp2 rows/finding/opt-log/phase rows/errors + listings refreshed from 5264b10) and RVV page v6 (§03 row, §07 bullet, §8.1 cell). haiku polish verified (numbers/code/tags identical), 2 hand fixes. Open for user: (1) make exp=vfexp2 the headline? (2) peer's 400 MHz contract vs 500 MHz published numbers; (3) normalize phase next lever; (4) repro-test dir deletion.
+[04:20 10-22] launched phase runs vx-{bt,do,btdo}-phases-001 (exp=vfexp2 + bound_table=1 / direct_o=2 (n=64 fix) / both); default + vfexp2 images verified byte-identical with the new options compiled out
+[13:51 10-22] defaults switched: exp=vfexp2 (LMUL4 S3 pass), bound_table=1 (bound_rows in prologue), normalize two-row/vfrdiv; launched final2-{001,phases-001,poly-001,poly-phases-001}
+[13:53 10-22] Gemmini kernel: bound table (same arithmetic, in prologue) + vfrdiv reciprocals (bit-identical expected); launched gemmini final2-001 + final2-phases-001
+[14:35 10-22] bound_table auto rule (nq>=64) in both builders; Gemmini decode image == published, prefill == bt2; XSAI decode reruns launched (final2-dec*, final2-poly-dec*)

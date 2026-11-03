@@ -1,0 +1,17 @@
+*~
+target/
+/.bsp/
+/.idea/
+/test_run_dir/
+*.cmd
+*.in
+*.out
+*#
+*.o
+*.#*
+fpe/logs
+fpe/obj_dir
+fpe/project
+fpe/target
+fpe/top.v
+*.txt

@@ -1,0 +1,3 @@
+/das/ts01/home/jiashuao/e2e/tools/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: /das/ts01/home/jiashuao/AMENPU/wt-xarch-bench/output/xarch-xsai-final2-poly-dec-phases-001/XSAI/decode/program/kernel.elf has a LOAD segment with RWX permissions
+START XSAI decode r0
+PASS XSAI decode r0 32737

@@ -1,0 +1,7 @@
+/das/ts01/home/jiashuao/e2e/tools/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: /das/ts01/home/jiashuao/AMENPU/wt-xarch-bench/output/xarch-xsai-phases-003/XSAI/prefill-causal/program/kernel.elf has a LOAD segment with RWX permissions
+/das/ts01/home/jiashuao/e2e/tools/riscv/bin/../lib/gcc/riscv64-unknown-elf/15.1.0/../../../../riscv64-unknown-elf/bin/ld: warning: /das/ts01/home/jiashuao/AMENPU/wt-xarch-bench/output/xarch-xsai-phases-003/XSAI/prefill-dense/program/kernel.elf has a LOAD segment with RWX permissions
+START XSAI prefill-causal r0
+START XSAI prefill-dense r0
+PASS XSAI prefill-causal r0 1110896
+FAIL XSAI prefill-dense r0 1956409
+EXIT 1

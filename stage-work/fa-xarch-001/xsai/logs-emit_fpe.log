@@ -1,0 +1,32 @@
+=============== CUTE.test.runMain cute.FReducePE.../fa-xarch-001/xsai/fpe-unit/rtl ===============
+==================================================================================================
+[518/581] difftest.compile
+[518] [info] compiling 6 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/difftest/compile.dest/classes ...
+[538/581] utility.compile
+[538] [info] compiling 7 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/utility/compile.dest/classes ...
+[538] [info] done compiling
+[518] [info] done compiling
+[518] [info] compiling 16 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/difftest/compile.dest/classes ...
+[553/581] XSAICache.compile
+[553] [info] compiling 22 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/XSAICache/compile.dest/classes ...
+[518] [info] done compiling
+[559/581] difftest.test.compile
+[559] [info] compiling 1 Scala source to /das/ts01/home/jiashuao/AMENPU/XSAI/out/difftest/test/compile.dest/classes ...
+[559] [info] done compiling
+[553] [info] done compiling
+[553] [info] compiling 37 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/XSAICache/compile.dest/classes ...
+[553] [info] done compiling
+[553] [info] compiling 13 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/XSAICache/compile.dest/classes ...
+[553] [info] done compiling
+[567/581] CUTE.compile
+[567] [info] compiling 36 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/CUTE/compile.dest/classes ...
+[567/581] =============== CUTE.test.runMain cute.FR...ch-001/xsai/fpe-unit/rtl =============== 60s
+[567] CUTE.compile 6s
+==================================================================================================
+[567] [info] done compiling
+[574/581] CUTE.test.compile
+[574] [info] compiling 14 Scala sources to /das/ts01/home/jiashuao/AMENPU/XSAI/out/CUTE/test/compile.dest/classes ...
+[574] [info] done compiling
+[581/581] =============== CUTE.test.runMain cute.FR...ch-001/xsai/fpe-unit/rtl =============== 72s
+==================================================================================================
+EXIT 0

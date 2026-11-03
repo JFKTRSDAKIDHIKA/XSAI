@@ -1,0 +1,10 @@
+[book]
+authors = ["xieby1"]
+language = "en"
+multilingual = false
+src = "docs/"
+title = "ChiselAIA"
+
+[output.html]
+git-repository-url = "https://openxiangshan.github.io/ChiselAIA/"
+mathjax-support = true

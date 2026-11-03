@@ -1,0 +1,11 @@
+emu compiled at Oct 20 2026, 14:11:12
+[INFO] init for constantin: loaded from init.
+Using simulated 1048576B flash
+Core  0's Commit SHA is: c1c8c65101, dirty: 1
+Using simulated 8386560MB RAM
+The image is /das/ts01/home/jiashuao/AMENPU/stage-work/fa-xarch-001/xsai/microbench/mb.bin
+Ramulator2 library: /home/jiashuao/.local/opt/ramulator2/72427a1bba37/libameramulator.so
+Ramulator2 config: /home/jiashuao/.local/opt/ramulator2/72427a1bba37/ddr4-3200-1ch.yaml
+MB m8_old l1_row=3562 l2_row=3536
+MB m2_tuned l1_row=6131 l2_row=6096
+MB m1_tuned l1_row=11752 l2_row=11701

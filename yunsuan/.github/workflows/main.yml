@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ kunminghu-v3, v2r2a ]
+
+jobs:
+  builtin-test:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Scala
+        uses: olafurpg/setup-scala@v10
+
+      - name: Cache
+        id: cache
+        uses: coursier/cache-action@v6
+
+      - name: Install Verilator and Math Libraries (GMP/MPFR)
+        run: |
+          sudo apt update
+          sudo apt install -y verilator libgmp-dev libmpfr-dev
+
+      - name: Setup Mill
+        uses: jodersky/setup-mill@v0.2.3
+        with:
+          mill-version: 0.11.1
+
+      - name: builtin-chiseltest
+        run: |
+          make test
+
+      - name: Random Unit-Test
+        run: |
+          make clean
+          make emu
+          ./build/emu -O 10000
